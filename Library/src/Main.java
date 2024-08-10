@@ -15,6 +15,8 @@
 
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.util.Date;
+
 import javax.swing.JDialog;
 
 public class Main implements Runnable {
@@ -29,6 +31,7 @@ public static void main(String[] args) {
 		JDialog.setDefaultLookAndFeelDecorated(true);
 		// Throw a nice little title page up on the screen first
 		new Splash().showSplash(3000);
+		System.out.println(new Date().toString() + " : Starting Library Management System");
 		//EventQueue.invokeLater(new Main(new JLibrary()));
         EventQueue.invokeLater(new Main(new LoginScreen()));
 	}

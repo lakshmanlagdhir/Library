@@ -19,6 +19,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -84,6 +86,7 @@ public class LoginScreen extends JFrame {
         
         try {
 			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println(new Date().toString() + " : Opening Login Screen");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Library","root","");
             Statement stmt = conn.createStatement();
             stmt.execute("SELECT * FROM Login");
@@ -121,7 +124,8 @@ public class LoginScreen extends JFrame {
             ResultSet rs = stmt.getResultSet();
             boolean recordfound = rs.next();
             if (recordfound) {
-                   EventQueue.invokeLater(new Main(new JLibrary()));
+            	System.out.println(new Date().toString() + " : Login Successfull");
+                EventQueue.invokeLater(new Main(new JLibrary()));
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "The system could not log you in.\n" +
